@@ -107,35 +107,6 @@ int main() {
 
 En este caso, el valor de la variable `cantidad` sí se modifica, ya que la función recibe su dirección de memoria y accede directamente a ella mediante un puntero, permitiendo cambiar el valor original desde la función.
 
-
-## 📊 Estructuras de Datos Estáticas
-
-### 📈 Arreglos Unidimensionales (Vectores)
-Un **arreglo unidimensional** o **vector** es una estructura de datos estática que permite almacenar una colección de elementos del mismo tipo en posiciones de memoria contiguas, todos bajo un mismo nombre.
-
-Desde un punto de vista lógico, un vector puede imaginarse como una fila de casilleros numerados, donde cada número representa un **índice** que permite acceder a un valor específico. Es importante recordar que los índices siempre comienzan desde la posición cero.
-
-**Características principales:**
-- Homogeneidad: todos los elementos deben ser del mismo tipo de dato (int, float, char, etc.).
-- Acceso mediante índices numéricos.
-- Tamaño fijo definido en tiempo de compilación.
-
-Los arreglos unidimensionales se utilizan comúnmente para agrupar datos relacionados, como calificaciones, edades o registros numéricos, sin necesidad de declarar múltiples variables individuales.
-
----
-
-### ⬛ Arreglos Bidimensionales (Matrices)
-Los **arreglos bidimensionales**, también conocidos como **matrices**, organizan los datos en dos dimensiones: filas y columnas. Esta estructura es similar a una tabla o a una hoja de cálculo.
-
-Para acceder a un elemento específico se utilizan dos índices: uno para la fila y otro para la columna, lo que permite una ubicación precisa dentro de la matriz.
-
-**Características principales:**
-- Acceso mediante la sintaxis matriz[fila][columna].
-- Los datos se almacenan de forma lineal en memoria, fila por fila.
-- Su recorrido suele realizarse mediante ciclos anidados.
-
-Las matrices son muy utilizadas para representar tablas de datos, tableros de juegos, mapas y operaciones matemáticas.
-
 #### 🔹 Importancia de la modularidad
 
 - Mejora la legibilidad y organización del código  
