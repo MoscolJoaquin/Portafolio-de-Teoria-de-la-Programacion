@@ -1,77 +1,140 @@
-### 🧱 Modularidad
+### 📦 Programación modular
+- Analizar los conceptos fundamentales de la programación modular.
+- Aplicar módulos y funciones en la resolución de problemas computacionales.
+- Mejorar la organización, reutilización y mantenimiento del código.
 
-La **modularidad** es un principio fundamental de la programación que consiste en dividir un programa en **módulos o funciones independientes**, donde cada uno cumple una tarea específica. Este enfoque permite que los programas sean más **claros, organizados, reutilizables y fáciles de mantener**.
-
-Al aplicar la modularidad, se evita la repetición de código y se facilita la detección y corrección de errores, ya que cada módulo puede probarse de manera independiente. Además, este principio es clave en el desarrollo de software estructurado y escalable [16].
+### 📊 Estructuras de datos estáticas
+- Comprender el funcionamiento de los arreglos unidimensionales (vectores).
+- Aplicar arreglos bidimensionales (matrices) en la resolución de problemas.
+- Identificar el uso de arreglos multidimensionales.
+- Manejar cadenas de caracteres (strings) en el lenguaje C.
 
 ---
 
-#### 🔹 Paso de parámetros por valor
+## 🧩 Programación Modular
 
-El **paso de parámetros por valor** consiste en enviar a una función una **copia del valor** de la variable original. Cualquier modificación que se realice dentro de la función **no afecta** al valor original de la variable.
+### 📦 Conceptos básicos de la programación modular
+La **programación modular** es una técnica que consiste en dividir un programa extenso en partes más pequeñas llamadas **módulos**, donde cada módulo se encarga de cumplir una función específica dentro del sistema.
+
+Este enfoque permite que los programas sean más fáciles de entender, desarrollar y mantener, evitando códigos largos y complejos. Cada módulo puede ser diseñado y probado de forma independiente, lo que facilita la detección y corrección de errores.
+
+La idea principal de la programación modular es que cada módulo:
+- Tenga una única responsabilidad.
+- Sea reutilizable en otros programas.
+- Pueda modificarse sin afectar al resto del sistema.
+
+---
+
+### 🧠 Uso de módulos y funciones en la resolución de problemas
+Una **función** es un bloque de código que realiza una tarea específica y puede ser reutilizado varias veces dentro de un programa. Cuando varias funciones relacionadas se agrupan, forman un **módulo**.
+
+Resolver problemas mediante programación modular implica:
+- Dividir el problema principal en subproblemas más pequeños.
+- Asignar cada subproblema a una función o módulo.
+- Integrar las soluciones parciales en un programa completo y funcional.
+
+Este método mejora la lógica del programa, facilita su comprensión y permite desarrollar aplicaciones más grandes sin aumentar innecesariamente la complejidad.
+
+---
+
+### 🛠️ Ventajas de la programación modular
+- Permite una mejor organización del código.
+- Facilita el mantenimiento y la corrección de errores.
+- Favorece la reutilización de funciones en otros proyectos.
+- Reduce la complejidad de los programas grandes.
+- Mejora el trabajo colaborativo en equipo.
+
+---
+#### 📊Paso de parámetros por valor
+
+El **paso de parámetros por valor** consiste en enviar a una función una **copia del valor** de la variable original. Cualquier modificación que se realice dentro de la función **no afecta** al valor original.
+
+**Ejemplo en lenguaje C:**
+
+```
+#include <stdio.h>
+
+void duplicar(int valor) {
+    valor = valor * 2;
+}
+
+int main() {
+    int cantidad = 10;
+    duplicar(cantidad);
+    printf("%d", cantidad);
+    return 0;
+}
+```
+### 📈Prueba de escritorio
+| Paso | Variable `cantidad` (main) | Variable `valor` (función) | Explicación                                            |
+| ---- | -------------------------- | -------------------------- | ------------------------------------------------------ |
+| 1    | 10                         | —                          | Se declara la variable `cantidad` con valor inicial 10 |
+| 2    | 10                         | 10                         | Se llama a la función y se copia el valor              |
+| 3    | 10                         | 20                         | La variable `valor` se duplica dentro de la función    |
+| 4    | 10                         | —                          | Finaliza la ejecución de la función                    |
+| 5    | 10                         | —                          | Se imprime el valor de `cantidad`                      |
+
+En este ejemplo se observa que la variable cantidad conserva su valor original, ya que la función trabaja únicamente con una copia del dato recibido y no con la variable original.
+
+#### 📊Paso de parámetros por referencia
+
+El **paso de parámetros por referencia** permite que una función reciba la **dirección de memoria** de una variable, lo que hace posible modificar directamente su valor original.
 
 **Ejemplo en lenguaje C:**
 
 ```c
 #include <stdio.h>
 
-void incrementar(int x) {
-    x = x + 1;
+void duplicar(int *valor) {
+    *valor = (*valor) * 2;
 }
 
 int main() {
-    int numero = 5;
-    incrementar(numero);
-    printf("%d", numero);
+    int cantidad = 10;
+    duplicar(&cantidad);
+    printf("%d", cantidad);
     return 0;
 }
 ```
-### Prueba de escritorio
-| Paso | Variable `numero` (main) | Variable `x` (función) | Explicación |
-|-----:|--------------------------|------------------------|-------------|
-| 1 | 5 | — | Se declara `numero` con valor inicial 5 |
-| 2 | 5 | 5 | Se llama a la función y se copia el valor |
-| 3 | 5 | 6 | `x` se incrementa dentro de la función |
-| 4 | 5 | — | La función termina |
-| 5 | 5 | — | Se imprime `numero` |
+### 📈Prueba de escritorio
+| Paso | Variable `cantidad` (main) | Dirección apuntada por `valor` | Explicación                                            |
+| ---- | -------------------------- | ------------------------------ | ------------------------------------------------------ |
+| 1    | 10                         | —                              | Se declara la variable `cantidad` con valor inicial 10 |
+| 2    | 10                         | &cantidad                      | Se envía la dirección de memoria a la función          |
+| 3    | 20                         | &cantidad                      | Se modifica el valor apuntado por el puntero           |
+| 4    | 20                         | —                              | Finaliza la ejecución de la función                    |
+| 5    | 20                         | —                              | Se imprime el valor de `cantidad`                      |
 
-En este ejemplo, la variable `numero` mantiene su valor original, ya que la función trabaja únicamente con una copia del dato recibido [17].
+En este caso, el valor de la variable `cantidad` sí se modifica, ya que la función recibe su dirección de memoria y accede directamente a ella mediante un puntero, permitiendo cambiar el valor original desde la función.
 
----
 
-#### 🔹 Paso de parámetros por referencia
+## 📊 Estructuras de Datos Estáticas
 
-El **paso de parámetros por referencia** permite que la función reciba la **dirección de memoria** de la variable original, lo que posibilita modificar directamente su contenido.
+### 📈 Arreglos Unidimensionales (Vectores)
+Un **arreglo unidimensional** o **vector** es una estructura de datos estática que permite almacenar una colección de elementos del mismo tipo en posiciones de memoria contiguas, todos bajo un mismo nombre.
 
-**Ejemplo en lenguaje C:**
+Desde un punto de vista lógico, un vector puede imaginarse como una fila de casilleros numerados, donde cada número representa un **índice** que permite acceder a un valor específico. Es importante recordar que los índices siempre comienzan desde la posición cero.
 
-```c
-#include <stdio.h>
+**Características principales:**
+- Homogeneidad: todos los elementos deben ser del mismo tipo de dato (int, float, char, etc.).
+- Acceso mediante índices numéricos.
+- Tamaño fijo definido en tiempo de compilación.
 
-void incrementar(int *x) {
-    *x = *x + 1;
-}
-
-int main() {
-    int numero = 5;
-    incrementar(&numero);
-    printf("%d", numero);
-    return 0;
-}
-```
-### Prueba de escritorio
-
-| Paso | Variable `numero` (main) | Dirección apuntada por `x` | Explicación |
-|-----:|--------------------------|----------------------------|-------------|
-| 1 | 5 | — | Se declara `numero` con valor inicial 5 |
-| 2 | 5 | &numero | Se envía la dirección de memoria |
-| 3 | 6 | &numero | Se incrementa el valor apuntado |
-| 4 | 6 | — | La función termina |
-| 5 | 6 | — | Se imprime `numero` |
-
-En este caso, el valor de la variable `numero` sí cambia, debido a que la función accede directamente a la dirección de memoria mediante un puntero [18].
+Los arreglos unidimensionales se utilizan comúnmente para agrupar datos relacionados, como calificaciones, edades o registros numéricos, sin necesidad de declarar múltiples variables individuales.
 
 ---
+
+### ⬛ Arreglos Bidimensionales (Matrices)
+Los **arreglos bidimensionales**, también conocidos como **matrices**, organizan los datos en dos dimensiones: filas y columnas. Esta estructura es similar a una tabla o a una hoja de cálculo.
+
+Para acceder a un elemento específico se utilizan dos índices: uno para la fila y otro para la columna, lo que permite una ubicación precisa dentro de la matriz.
+
+**Características principales:**
+- Acceso mediante la sintaxis matriz[fila][columna].
+- Los datos se almacenan de forma lineal en memoria, fila por fila.
+- Su recorrido suele realizarse mediante ciclos anidados.
+
+Las matrices son muy utilizadas para representar tablas de datos, tableros de juegos, mapas y operaciones matemáticas.
 
 #### 🔹 Importancia de la modularidad
 
